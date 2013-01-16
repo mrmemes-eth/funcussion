@@ -1,0 +1,9 @@
+# standard xcode excludes
+.DS_Store
+*~.nib
+build/
+.xcodeproj/ !*.xcodeproj/project.pbxproj
+xcuserdata
+
+# project specific excludes
+Pods
