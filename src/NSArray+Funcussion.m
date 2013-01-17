@@ -23,7 +23,7 @@
 }
 
 -(void)each:(void (^)(id obj))aBlock {
-  [self enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop) {
+  [self eachWithIndex:^(id object, NSUInteger index) {
     aBlock(object);
   }];
 }
@@ -58,7 +58,7 @@
   return result;
 }
 
--(id)reduce:(id)accumulator withBlock:(id (^)(id, id))aBlock {
+-(id)reduce:(id)accumulator withBlock:(id (^)(id accumulator, id object))aBlock {
   __block id outerAccumulator = accumulator;
   [self each:^(id obj) {
     outerAccumulator = aBlock(outerAccumulator,obj);
