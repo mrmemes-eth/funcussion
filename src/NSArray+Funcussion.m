@@ -22,19 +22,19 @@
   }
 }
 
--(void)each:(VoidIteratorBlock)aBlock {
+-(void)each:(VoidArrayIteratorBlock)aBlock {
   [self eachWithIndex:^(id object, NSUInteger index) {
     aBlock(object);
   }];
 }
 
--(void)eachWithIndex:(VoidIteratorIndexedBlock)aBlock {
+-(void)eachWithIndex:(VoidArrayIteratorIndexedBlock)aBlock {
   [self enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop) {
     aBlock(object,idx);
   }];
 }
 
--(NSArray*)map:(ObjectIteratorBlock)aBlock {
+-(NSArray*)map:(ObjectArrayIteratorBlock)aBlock {
   NSMutableArray *result = [NSMutableArray array];
   [self each:^(id object) {
     [result addObject:aBlock(object)];
@@ -42,7 +42,7 @@
   return result;
 }
 
--(NSArray*)mapWithIndex:(ObjectIteratorIndexedBlock)aBlock {
+-(NSArray*)mapWithIndex:(ObjectArrayIteratorIndexedBlock)aBlock {
   NSMutableArray *result = [NSMutableArray array];
   [self eachWithIndex:^(id object, NSUInteger idx) {
     [result addObject:aBlock(object,idx)];
@@ -50,7 +50,7 @@
   return result;
 }
 
--(NSArray*)filter:(BoolIteratorBlock)aBlock {
+-(NSArray*)filter:(BoolArrayIteratorBlock)aBlock {
   NSMutableArray *result = [NSMutableArray array];
   [self each:^(id object) {
     if (aBlock(object)) [result addObject: object];
@@ -58,7 +58,7 @@
   return result;
 }
 
--(id)reduce:(id)accumulator withBlock:(ObjectAccumulatorBlock)aBlock {
+-(id)reduce:(id)accumulator withBlock:(ObjectArrayAccumulatorBlock)aBlock {
   __block id outerAccumulator = accumulator;
   [self each:^(id obj) {
     outerAccumulator = aBlock(outerAccumulator,obj);
@@ -66,11 +66,11 @@
   return outerAccumulator;
 }
 
--(id)detect:(BoolIteratorBlock)aBlock {
+-(id)detect:(BoolArrayIteratorBlock)aBlock {
   return [[self filter:aBlock] firstObject];
 }
 
--(BOOL)every:(BoolIteratorBlock)aBlock {
+-(BOOL)every:(BoolArrayIteratorBlock)aBlock {
   __block BOOL evaluation = YES;
   [self each:^(id obj) {
     if (evaluation) evaluation = aBlock(obj);
@@ -78,7 +78,7 @@
   return evaluation;
 }
 
--(BOOL)any:(BoolIteratorBlock)aBlock {
+-(BOOL)any:(BoolArrayIteratorBlock)aBlock {
   NSArray *matches = [self filter:^BOOL(id obj) {
     return aBlock(obj);
   }];

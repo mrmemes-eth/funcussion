@@ -12,6 +12,9 @@
 		7C3EFAB316A73FB900AA62F1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3EFAB216A73FB900AA62F1 /* SenTestingKit.framework */; };
 		7C3EFAB616A7436100AA62F1 /* NSArray+FuncussionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3EFAB416A7433200AA62F1 /* NSArray+FuncussionTest.m */; };
 		7C3EFAB716A7436A00AA62F1 /* NSArray+Funcussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1003E716A72D6E00808110 /* NSArray+Funcussion.m */; };
+		7C3EFABA16A8806000AA62F1 /* NSDictionary+Funcussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3EFAB916A8806000AA62F1 /* NSDictionary+Funcussion.m */; };
+		7C3EFABD16A8807F00AA62F1 /* NSDictionary+FuncussionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3EFABC16A8807F00AA62F1 /* NSDictionary+FuncussionTest.m */; };
+		7C3EFABE16A8835900AA62F1 /* NSDictionary+Funcussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3EFAB916A8806000AA62F1 /* NSDictionary+Funcussion.m */; };
 		7CEB49E916A734FC007A0564 /* NSArray+Funcussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1003E716A72D6E00808110 /* NSArray+Funcussion.m */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +38,9 @@
 		7C3EFAA116A73E5200AA62F1 /* Test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C3EFAB216A73FB900AA62F1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		7C3EFAB416A7433200AA62F1 /* NSArray+FuncussionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FuncussionTest.m"; sourceTree = "<group>"; };
+		7C3EFAB816A8806000AA62F1 /* NSDictionary+Funcussion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Funcussion.h"; sourceTree = "<group>"; };
+		7C3EFAB916A8806000AA62F1 /* NSDictionary+Funcussion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Funcussion.m"; sourceTree = "<group>"; };
+		7C3EFABC16A8807F00AA62F1 /* NSDictionary+FuncussionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+FuncussionTest.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,8 @@
 			children = (
 				7C1003E616A72D6E00808110 /* NSArray+Funcussion.h */,
 				7C1003E716A72D6E00808110 /* NSArray+Funcussion.m */,
+				7C3EFAB816A8806000AA62F1 /* NSDictionary+Funcussion.h */,
+				7C3EFAB916A8806000AA62F1 /* NSDictionary+Funcussion.m */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -99,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				7C3EFAB416A7433200AA62F1 /* NSArray+FuncussionTest.m */,
+				7C3EFABC16A8807F00AA62F1 /* NSDictionary+FuncussionTest.m */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -214,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CEB49E916A734FC007A0564 /* NSArray+Funcussion.m in Sources */,
+				7C3EFABA16A8806000AA62F1 /* NSDictionary+Funcussion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +233,8 @@
 			files = (
 				7C3EFAB616A7436100AA62F1 /* NSArray+FuncussionTest.m in Sources */,
 				7C3EFAB716A7436A00AA62F1 /* NSArray+Funcussion.m in Sources */,
+				7C3EFABD16A8807F00AA62F1 /* NSDictionary+FuncussionTest.m in Sources */,
+				7C3EFABE16A8835900AA62F1 /* NSDictionary+Funcussion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

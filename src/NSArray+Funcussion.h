@@ -1,24 +1,24 @@
 #import <Foundation/Foundation.h>
 
-typedef void (^VoidIteratorBlock)(id obj);
-typedef void (^VoidIteratorIndexedBlock)(id obj, NSUInteger index);
-typedef BOOL (^BoolIteratorBlock)(id obj);
-typedef id (^ObjectIteratorBlock)(id obj);
-typedef id (^ObjectIteratorIndexedBlock)(id obj, NSUInteger index);
-typedef id (^ObjectAccumulatorBlock)(id acc, id obj);
+typedef void (^VoidArrayIteratorBlock)(id obj);
+typedef void (^VoidArrayIteratorIndexedBlock)(id obj, NSUInteger index);
+typedef BOOL (^BoolArrayIteratorBlock)(id obj);
+typedef id (^ObjectArrayIteratorBlock)(id obj);
+typedef id (^ObjectArrayIteratorIndexedBlock)(id obj, NSUInteger index);
+typedef id (^ObjectArrayAccumulatorBlock)(id acc, id obj);
 
 @interface NSArray (Funcussion)
 
 -(id)firstObject;
 -(NSArray*)flatten;
--(void)each:(VoidIteratorBlock)aBlock;
--(void)eachWithIndex:(VoidIteratorIndexedBlock)aBlock;
--(NSArray*)map:(ObjectIteratorBlock)aBlock;
--(NSArray*)mapWithIndex:(ObjectIteratorIndexedBlock)aBlock;
--(NSArray*)filter:(BoolIteratorBlock)aBlock;
--(id)reduce:(id)accumulator withBlock:(id(^)(id accumulator, id obj))aBlock;
--(id)detect:(BoolIteratorBlock)aBlock;
--(BOOL)every:(BoolIteratorBlock)aBlock;
--(BOOL)any:(BoolIteratorBlock)aBlock;
+-(void)each:(VoidArrayIteratorBlock)aBlock;
+-(void)eachWithIndex:(VoidArrayIteratorIndexedBlock)aBlock;
+-(NSArray*)map:(ObjectArrayIteratorBlock)aBlock;
+-(NSArray*)mapWithIndex:(ObjectArrayIteratorIndexedBlock)aBlock;
+-(NSArray*)filter:(BoolArrayIteratorBlock)aBlock;
+-(id)reduce:(id)accumulator withBlock:(ObjectArrayAccumulatorBlock)aBlock;
+-(id)detect:(BoolArrayIteratorBlock)aBlock;
+-(BOOL)every:(BoolArrayIteratorBlock)aBlock;
+-(BOOL)any:(BoolArrayIteratorBlock)aBlock;
 
 @end
