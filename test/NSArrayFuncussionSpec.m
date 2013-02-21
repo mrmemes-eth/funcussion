@@ -6,11 +6,13 @@ SPEC_BEGIN(NSArrayFuncussion)
 __block NSArray *simpleArray;
 __block NSArray *nestedArray;
 __block NSArray *repetitiveArray;
+__block NSArray *numericArray;
 
 beforeEach(^{
   simpleArray = @[@"one",@"two"];
   nestedArray = @[@"microphone",@"check",simpleArray,simpleArray];
   repetitiveArray = @[@"one",@"one",@"won",@"wonder",@"wunder"];
+  numericArray = @[@1,@2,@3,@4,@5];
 });
 
 afterEach(^{
@@ -104,10 +106,25 @@ describe(@"filter:", ^{
   });
 });
 
+describe(@"reduceWithAccumulator:andIndexedBlock:", ^{
+  it(@"handles numeric reduction", ^{
+    NSNumber *reduction = [numericArray reduceWithAccumulator:@0 andIndexedBlock:^id(id acc, id obj, NSUInteger index) {
+      return [NSNumber numberWithInt:([acc intValue] + [obj intValue] + index)];
+    }];
+    [[reduction should] equal:@25];
+  });
+  it(@"handles string reduction", ^{
+    NSArray *array = @[@"chupa",@"cabra",@"nibre"];
+    NSString *reduction = [array reduceWithAccumulator:@"el" andIndexedBlock:^id(id acc, id obj, NSUInteger index) {
+      return [acc stringByAppendingFormat:@", %@:%d",obj,index];
+    }];
+    [[reduction should] equal:@"el, chupa:0, cabra:1, nibre:2"];
+  });
+});
+
 describe(@"reduceWithAccumulator:andBlock:", ^{
   it(@"handles numeric reduction", ^{
-    NSArray *array = @[@1,@2,@3,@4,@5];
-    NSNumber *reduction = [array reduceWithAccumulator:@0 andBlock:^id(id acc, id obj) {
+    NSNumber *reduction = [numericArray reduceWithAccumulator:@0 andBlock:^id(id acc, id obj) {
       return [NSNumber numberWithInt:[acc intValue] + [obj intValue]];
     }];
     [[reduction should] equal:@15];
@@ -132,7 +149,7 @@ describe(@"detect:", ^{
 describe(@"every:", ^{
   describe(@"when all elements match", ^{
     it(@"returns BOOL YES", ^{
-      BOOL result = [@[@1,@2,@3] every:^BOOL(id obj) {
+      BOOL result = [numericArray every:^BOOL(id obj) {
         return [obj isKindOfClass:[NSNumber class]];
       }];
       [[theValue(result) should] equal:theValue(YES)];
@@ -141,7 +158,7 @@ describe(@"every:", ^{
 
   describe(@"when not all elements match", ^{
     it(@"returns BOOL NO", ^{
-      BOOL result = [@[@1,@2,@3] every:^BOOL(id obj) {
+      BOOL result = [numericArray every:^BOOL(id obj) {
         return [obj intValue] > 1;
       }];
       [[theValue(result) should] equal:theValue(NO)];
@@ -153,7 +170,7 @@ describe(@"every:", ^{
 describe(@"any:", ^{
   describe(@"when any element matches", ^{
     it(@"returns BOOL YES", ^{
-      BOOL result = [@[@1,@2,@3] any:^BOOL(id obj) {
+      BOOL result = [numericArray any:^BOOL(id obj) {
         return [obj intValue] > 1;
       }];
       [[theValue(result) should] equal:theValue(YES)];
@@ -161,7 +178,7 @@ describe(@"any:", ^{
   });
   describe(@"when no element matches", ^{
     it(@"returns BOOL NO", ^{
-      BOOL result = [@[@1,@2,@3] any:^BOOL(id obj) {
+      BOOL result = [numericArray any:^BOOL(id obj) {
         return [obj isKindOfClass:[NSString class]];
       }];
       [[theValue(result) should] equal:theValue(NO)];

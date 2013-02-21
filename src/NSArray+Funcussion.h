@@ -6,6 +6,7 @@ typedef BOOL (^BoolArrayIteratorBlock)(id obj);
 typedef id (^ObjectArrayIteratorBlock)(id obj);
 typedef id (^ObjectArrayIteratorIndexedBlock)(id obj, NSUInteger index);
 typedef id (^ObjectArrayAccumulatorBlock)(id acc, id obj);
+typedef id (^ObjectArrayAccumulatorIndexedBlock)(id acc, id obj, NSUInteger index);
 
 @interface NSArray (Funcussion)
 
@@ -17,6 +18,7 @@ typedef id (^ObjectArrayAccumulatorBlock)(id acc, id obj);
 -(NSArray*)mapWithIndex:(ObjectArrayIteratorIndexedBlock)aBlock;
 -(NSArray*)filter:(BoolArrayIteratorBlock)aBlock;
 -(id)reduceWithAccumulator:(id)accumulator andBlock:(ObjectArrayAccumulatorBlock)aBlock;
+-(id)reduceWithAccumulator:(id)accumulator andIndexedBlock:(ObjectArrayAccumulatorIndexedBlock)aBlock;
 -(id)detect:(BoolArrayIteratorBlock)aBlock;
 -(BOOL)every:(BoolArrayIteratorBlock)aBlock;
 -(BOOL)any:(BoolArrayIteratorBlock)aBlock;

@@ -14,12 +14,18 @@
   }];
 }
 
--(id)reduceWithAccumulator:(id)accumulator andBlock:(ObjectArrayAccumulatorBlock)aBlock {
+-(id)reduceWithAccumulator:(id)accumulator andIndexedBlock:(ObjectArrayAccumulatorIndexedBlock)aBlock {
   __block id outerAccumulator = accumulator;
-  [self each:^(id obj) {
-    outerAccumulator = aBlock(outerAccumulator,obj);
+  [self eachWithIndex:^(id obj, NSUInteger index) {
+    outerAccumulator = aBlock(outerAccumulator, obj, index);
   }];
   return outerAccumulator;
+}
+
+-(id)reduceWithAccumulator:(id)accumulator andBlock:(ObjectArrayAccumulatorBlock)aBlock {
+  return [self reduceWithAccumulator:accumulator andIndexedBlock:^id(id acc, id obj, NSUInteger index) {
+    return aBlock(acc,obj);
+  }];
 }
 
 -(NSArray*)map:(ObjectArrayIteratorBlock)aBlock {
@@ -29,11 +35,9 @@
 }
 
 -(NSArray*)mapWithIndex:(ObjectArrayIteratorIndexedBlock)aBlock {
-  NSMutableArray *result = [NSMutableArray array];
-  [self eachWithIndex:^(id object, NSUInteger idx) {
-    [result addObject:aBlock(object,idx)];
+  return [self reduceWithAccumulator:@[] andIndexedBlock:^id(id acc, id obj, NSUInteger index) {
+    return [acc arrayByAddingObject:aBlock(obj,index)];
   }];
-  return result;
 }
 
 -(NSArray*)filter:(BoolArrayIteratorBlock)aBlock {
