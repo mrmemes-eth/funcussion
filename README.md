@@ -128,6 +128,21 @@ _Example:_
       return [NSNumber numberWithInt:[acc intValue] + [obj intValue]];
     }]; // => @42
 
+### reduceWithAccumulator:andIndexedBlock:
+
+Applies the supplied function to reduce all values in the `NSArray` down to a
+single value. Passes an index to the block. Initialize it with an accumulator
+of the same type you will reduce to.
+
+    -(id)reduceWithAccumulator:(id)accumulator andIndexedBlock:(ObjectArrayAccumulatorBlock)aBlock;
+
+_Example:_
+
+    NSArray *numericArray = @[@22, @20];
+    [numericArray reduceWithAccumulator:@0 andIndexedBlock:^id(id acc, id obj, NSUInteger index) {
+      return [NSNumber numberWithInt:[acc intValue] + [obj intValue] + index];
+    }]; // => @43
+
 ### detect:
 
 Returns the first element of the array that matches the BOOL function passed it.
