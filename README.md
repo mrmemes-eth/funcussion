@@ -39,6 +39,21 @@ _Example:_
     [nestedArray flatten];
     // => @[@"microphone", @"check", @"one", @"two", @"one", @"two"];
 
+### max:
+
+Returns the "maximum" value for the array. Expects a block that returns an
+NSComparisonResult.
+
+    -(NSArray*)max:(ObjectArrayComparatorBlock)aBlock;
+
+_Example:_
+
+    [@[@42,@20,@22] max:^NSComparisonResult(id max, id obj) {
+      return [max compare:obj];
+    }];
+
+    // => @42
+
 ## NSArray functional operations
 
 Core methods for applying functional approaches to handling instances of

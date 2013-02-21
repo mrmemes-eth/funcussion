@@ -185,4 +185,24 @@ describe(@"any:", ^{
     });
   });
 });
+
+describe(@"max:", ^{
+  describe(@"numeric max", ^{
+    it(@"returns the biggest number", ^{
+      NSNumber *calculatedMax = [@[@42,@20,@22] max:^NSComparisonResult(id max, id obj) {
+        return [max compare:obj];
+      }];
+      [[calculatedMax should] equal:@42];
+    });
+  });
+  describe(@"string max", ^{
+    it(@"returns the alphabetically last string", ^{
+      NSNumber *calculatedMax = [repetitiveArray max:^NSComparisonResult(id max, id obj) {
+        return [max compare:obj];
+      }];
+      [[calculatedMax should] equal:@"wunder"];
+    });
+  });
+});
+
 SPEC_END

@@ -3,6 +3,7 @@
 typedef void (^VoidArrayIteratorBlock)(id obj);
 typedef void (^VoidArrayIteratorIndexedBlock)(id obj, NSUInteger index);
 typedef BOOL (^BoolArrayIteratorBlock)(id obj);
+typedef NSComparisonResult (^ObjectArrayComparatorBlock)(id max, id obj);
 typedef id (^ObjectArrayIteratorBlock)(id obj);
 typedef id (^ObjectArrayIteratorIndexedBlock)(id obj, NSUInteger index);
 typedef id (^ObjectArrayAccumulatorBlock)(id acc, id obj);
@@ -22,5 +23,6 @@ typedef id (^ObjectArrayAccumulatorIndexedBlock)(id acc, id obj, NSUInteger inde
 -(id)detect:(BoolArrayIteratorBlock)aBlock;
 -(BOOL)every:(BoolArrayIteratorBlock)aBlock;
 -(BOOL)any:(BoolArrayIteratorBlock)aBlock;
+-(id)max:(ObjectArrayComparatorBlock)aBlock;
 
 @end
