@@ -123,13 +123,13 @@ _Example:_
     // => [NSArray arrayWithObjects:[NSNumber numberWithInt:0],
     //                              [NSNumber numberWithInt:0], nil];
 
-### reduce:withBlock:
+### reduceWithAccumulator:andBlock:
 
 Applies the supplied function to reduce all values in the `NSArray` down to a
 single value. Initialize it with an accumulator of the same type you will
 reduce to.
 
-    -(id)reduce:(id)accumulator withBlock:(ObjectArrayAccumulatorBlock)aBlock;
+    -(id)reduceWithAccumulator:(id)accumulator andBlock:(ObjectArrayAccumulatorBlock)aBlock;
 
 _Example:_
 
@@ -137,7 +137,7 @@ _Example:_
                              [NSNumber numberWithInt:22],
                              [NSNumber numberWithInt:20], nil];
     NSNumber *accumulator = [NSNumber numberWithInt:0];
-    [numericArray reduce:accumulator withBlock:^id(id acc, id obj) {
+    [numericArray reduceWithAccumulator:accumulator andBlock:^id(id acc, id obj) {
       return [NSNumber numberWithInt:[acc intValue] + [obj intValue]];
     }]; // => [NSNumber numberWithInt:42]
 
@@ -284,18 +284,18 @@ _Example:_
       return [containPred evaluateWithObject:key];
     }]; // => [NSDictionary dictionaryWithObjectsAndKeys:@"one", @"one:1", nil];
 
-### reduce:withBlock:
+### reduceWithAccumulator:andBlock:
 
 Applies the supplied function to reduce all couplets in the `NSDictionary`
 down to a single value. Initialize it with an accumulator of the same type you
 will reduce to.
 
-    -(id)reduce:(id)accumulator withBlock:(ObjectAcumulatorDictBlock)aBlock;
+    -(id)reduceWithAccumulator:(id)accumulator andBlock:(ObjectAcumulatorDictBlock)aBlock;
 
 _Example:_
 
     NSNumber *accumulator = [NSNumber numberWithInt:0];
-    [simpleDict reduce:accumulator withBlock:^id(id acc, id key, id value) {
+    [simpleDict reduceWithAccumulator:accumulator andBlock:^id(id acc, id key, id value) {
       return [NSNumber numberWithInt:[acc intValue] + [value intValue]];
     }]; // => [NSNumber numberWithInt:3]
 
