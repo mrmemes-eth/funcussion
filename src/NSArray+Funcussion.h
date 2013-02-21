@@ -16,7 +16,7 @@ typedef id (^ObjectArrayAccumulatorBlock)(id acc, id obj);
 -(NSArray*)map:(ObjectArrayIteratorBlock)aBlock;
 -(NSArray*)mapWithIndex:(ObjectArrayIteratorIndexedBlock)aBlock;
 -(NSArray*)filter:(BoolArrayIteratorBlock)aBlock;
--(id)reduce:(id)accumulator withBlock:(ObjectArrayAccumulatorBlock)aBlock;
+-(id)reduceWithAccumulator:(id)accumulator andBlock:(ObjectArrayAccumulatorBlock)aBlock;
 -(id)detect:(BoolArrayIteratorBlock)aBlock;
 -(BOOL)every:(BoolArrayIteratorBlock)aBlock;
 -(BOOL)any:(BoolArrayIteratorBlock)aBlock;

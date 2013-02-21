@@ -93,15 +93,15 @@ describe(@"filter:", ^{
   });
 });
 
-describe(@"reduce:withBlock:", ^{
+describe(@"reduceWithAccumulator:andBlock:", ^{
   it(@"reduces strings", ^{
-    NSString *reduction = [simpleDict reduce:@"" withBlock:^id(id acc, id key, id value) {
+    NSString *reduction = [simpleDict reduceWithAccumulator:@"" andBlock:^id(id acc, id key, id value) {
       return [acc stringByAppendingFormat:@"%@:%@:",key,value];
     }];
     [[reduction should] equal:@"one:1:two:2:"];
   });
   it(@"reduces numbers", ^{
-    NSNumber *reduction = [simpleDict reduce:@0 withBlock:^id(id acc, id key, id value) {
+    NSNumber *reduction = [simpleDict reduceWithAccumulator:@0 andBlock:^id(id acc, id key, id value) {
       return [NSNumber numberWithInt:([acc intValue] + [value intValue])];
     }];
     [[reduction should] equal:@3];

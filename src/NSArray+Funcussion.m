@@ -58,7 +58,7 @@
   return result;
 }
 
--(id)reduce:(id)accumulator withBlock:(ObjectArrayAccumulatorBlock)aBlock {
+-(id)reduceWithAccumulator:(id)accumulator andBlock:(ObjectArrayAccumulatorBlock)aBlock {
   __block id outerAccumulator = accumulator;
   [self each:^(id obj) {
     outerAccumulator = aBlock(outerAccumulator,obj);

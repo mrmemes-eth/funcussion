@@ -38,7 +38,7 @@
   return result;
 }
 
--(id)reduce:(id)accumulator withBlock:(ObjectAcumulatorDictBlock)aBlock {
+-(id)reduceWithAccumulator:(id)accumulator andBlock:(ObjectAcumulatorDictBlock)aBlock {
   __block id outerAccumulator = accumulator;
   [self each:^(id key, id value) {
     outerAccumulator = aBlock(outerAccumulator, key, value);

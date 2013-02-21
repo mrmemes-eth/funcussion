@@ -12,7 +12,7 @@ typedef id (^ObjectAcumulatorDictBlock)(id acc, id key, id value);
 -(NSDictionary*)mapValues:(ObjectDictIteratorBlock)aBlock;
 -(NSArray*)mapToArray:(ObjectDictIteratorBlock)aBlock;
 -(NSDictionary*)filter:(BoolDictIteratorBlock)aBlock;
--(id)reduce:(id)accumulator withBlock:(ObjectAcumulatorDictBlock)aBlock;
+-(id)reduceWithAccumulator:(id)accumulator andBlock:(ObjectAcumulatorDictBlock)aBlock;
 -(BOOL)every:(BoolDictIteratorBlock)aBlock;
 -(BOOL)any:(BoolDictIteratorBlock)aBlock;
 @end

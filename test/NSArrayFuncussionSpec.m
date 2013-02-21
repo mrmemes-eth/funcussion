@@ -104,17 +104,17 @@ describe(@"filter:", ^{
   });
 });
 
-describe(@"reduce:", ^{
+describe(@"reduceWithAccumulator:andBlock:", ^{
   it(@"handles numeric reduction", ^{
     NSArray *array = @[@1,@2,@3,@4,@5];
-    NSNumber *reduction = [array reduce:@0 withBlock:^id(id acc, id obj) {
+    NSNumber *reduction = [array reduceWithAccumulator:@0 andBlock:^id(id acc, id obj) {
       return [NSNumber numberWithInt:[acc intValue] + [obj intValue]];
     }];
     [[reduction should] equal:@15];
   });
   it(@"handles string reduction", ^{
     NSArray *array = @[@"chupa",@"cabra",@"nibre"];
-    NSString *reduction = [array reduce:@"el" withBlock:^id(id acc, id obj) {
+    NSString *reduction = [array reduceWithAccumulator:@"el" andBlock:^id(id acc, id obj) {
       return [acc stringByAppendingFormat:@", %@",obj];
     }];
     [[reduction should] equal:@"el, chupa, cabra, nibre"];
