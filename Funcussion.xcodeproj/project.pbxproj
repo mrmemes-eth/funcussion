@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7C1003F816A72E0500808110 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1003F716A72E0500808110 /* Foundation.framework */; };
 		7C3EFABA16A8806000AA62F1 /* NSDictionary+Funcussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3EFAB916A8806000AA62F1 /* NSDictionary+Funcussion.m */; };
+		7C5A795C16D56F01001FD105 /* NSDictionaryFuncussionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5A795B16D56F01001FD105 /* NSDictionaryFuncussionSpec.m */; };
 		7C746DE816C58DFD000950A8 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3EFAB216A73FB900AA62F1 /* SenTestingKit.framework */; };
 		7C746DEB16C58DFD000950A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1003F716A72E0500808110 /* Foundation.framework */; };
 		7C746DFB16C58FB4000950A8 /* NSArrayFuncussionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C746DFA16C58FB4000950A8 /* NSArrayFuncussionSpec.m */; };
@@ -37,12 +38,11 @@
 		7C1003F416A72E0500808110 /* libFuncussion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFuncussion.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C1003F716A72E0500808110 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7C3EFAB216A73FB900AA62F1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		7C3EFAB416A7433200AA62F1 /* NSArray+FuncussionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FuncussionTest.m"; sourceTree = "<group>"; };
 		7C3EFAB816A8806000AA62F1 /* NSDictionary+Funcussion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Funcussion.h"; sourceTree = "<group>"; };
 		7C3EFAB916A8806000AA62F1 /* NSDictionary+Funcussion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Funcussion.m"; sourceTree = "<group>"; };
-		7C3EFABC16A8807F00AA62F1 /* NSDictionary+FuncussionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+FuncussionTest.m"; sourceTree = "<group>"; };
+		7C5A795B16D56F01001FD105 /* NSDictionaryFuncussionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDictionaryFuncussionSpec.m; path = test/NSDictionaryFuncussionSpec.m; sourceTree = SOURCE_ROOT; };
 		7C746DE716C58DFD000950A8 /* KiwiUnitTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KiwiUnitTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C746DFA16C58FB4000950A8 /* NSArrayFuncussionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayFuncussionSpec.m; sourceTree = SOURCE_ROOT; };
+		7C746DFA16C58FB4000950A8 /* NSArrayFuncussionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSArrayFuncussionSpec.m; path = test/NSArrayFuncussionSpec.m; sourceTree = SOURCE_ROOT; };
 		7C746DFC16C592A1000950A8 /* libPods-KiwiUnitTest.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-KiwiUnitTest.a"; path = "Pods/build/Release-iphoneos/libPods-KiwiUnitTest.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,8 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				7C1003E516A72D6E00808110 /* src */,
-				7C3EFAA516A73E5200AA62F1 /* test */,
-				7C746DEC16C58DFD000950A8 /* KiwiUnitTest */,
+				7C746DEC16C58DFD000950A8 /* test */,
 				7C1003F616A72E0500808110 /* Frameworks */,
 				7C1003F516A72E0500808110 /* Products */,
 				0A9DDB42EC4C468D97966F3C /* Pods-KiwiUnitTest.xcconfig */,
@@ -110,21 +109,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7C3EFAA516A73E5200AA62F1 /* test */ = {
-			isa = PBXGroup;
-			children = (
-				7C3EFAB416A7433200AA62F1 /* NSArray+FuncussionTest.m */,
-				7C3EFABC16A8807F00AA62F1 /* NSDictionary+FuncussionTest.m */,
-			);
-			path = test;
-			sourceTree = "<group>";
-		};
-		7C746DEC16C58DFD000950A8 /* KiwiUnitTest */ = {
+		7C746DEC16C58DFD000950A8 /* test */ = {
 			isa = PBXGroup;
 			children = (
 				7C746DFA16C58FB4000950A8 /* NSArrayFuncussionSpec.m */,
+				7C5A795B16D56F01001FD105 /* NSDictionaryFuncussionSpec.m */,
 			);
-			path = KiwiUnitTest;
+			path = test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,9 +139,9 @@
 			productReference = 7C1003F416A72E0500808110 /* libFuncussion.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		7C746DE616C58DFD000950A8 /* KiwiUnitTest */ = {
+		7C746DE616C58DFD000950A8 /* units */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7C746DF816C58DFD000950A8 /* Build configuration list for PBXNativeTarget "KiwiUnitTest" */;
+			buildConfigurationList = 7C746DF816C58DFD000950A8 /* Build configuration list for PBXNativeTarget "units" */;
 			buildPhases = (
 				7C746DE216C58DFD000950A8 /* Sources */,
 				7C746DE316C58DFD000950A8 /* Frameworks */,
@@ -162,7 +153,7 @@
 			);
 			dependencies = (
 			);
-			name = KiwiUnitTest;
+			name = units;
 			productName = KiwiUnitTest;
 			productReference = 7C746DE716C58DFD000950A8 /* KiwiUnitTest.octest */;
 			productType = "com.apple.product-type.bundle";
@@ -188,7 +179,7 @@
 			projectRoot = "";
 			targets = (
 				7C1003F316A72E0500808110 /* Funcussion */,
-				7C746DE616C58DFD000950A8 /* KiwiUnitTest */,
+				7C746DE616C58DFD000950A8 /* units */,
 			);
 		};
 /* End PBXProject section */
@@ -261,8 +252,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C746DFB16C58FB4000950A8 /* NSArrayFuncussionSpec.m in Sources */,
 				7C746DFE16C5934E000950A8 /* NSArray+Funcussion.m in Sources */,
 				7C746DFF16C59351000950A8 /* NSDictionary+Funcussion.m in Sources */,
+				7C5A795C16D56F01001FD105 /* NSDictionaryFuncussionSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,7 +411,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7C746DF816C58DFD000950A8 /* Build configuration list for PBXNativeTarget "KiwiUnitTest" */ = {
+		7C746DF816C58DFD000950A8 /* Build configuration list for PBXNativeTarget "units" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7C746DF616C58DFD000950A8 /* Debug */,
