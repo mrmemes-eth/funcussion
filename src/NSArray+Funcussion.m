@@ -2,26 +2,6 @@
 
 @implementation NSArray (Funcussion)
 
--(NSArray*)flatten {
-  NSMutableArray *result = [NSMutableArray array];
-  [self each:^(id obj) {
-    if ([obj isKindOfClass:[NSArray class]]) {
-      [result addObjectsFromArray:[obj flatten]];
-    } else {
-      [result addObject:obj];
-    }
-  }];
-  return result;
-}
-
--(id)firstObject {
-  if ([self count] > 0) {
-    return [self objectAtIndex:0];
-  } else {
-    return nil;
-  }
-}
-
 -(void)each:(VoidArrayIteratorBlock)aBlock {
   [self eachWithIndex:^(id object, NSUInteger index) {
     aBlock(object);
@@ -34,12 +14,18 @@
   }];
 }
 
--(NSArray*)map:(ObjectArrayIteratorBlock)aBlock {
-  NSMutableArray *result = [NSMutableArray array];
-  [self each:^(id object) {
-    [result addObject:aBlock(object)];
+-(id)reduceWithAccumulator:(id)accumulator andBlock:(ObjectArrayAccumulatorBlock)aBlock {
+  __block id outerAccumulator = accumulator;
+  [self each:^(id obj) {
+    outerAccumulator = aBlock(outerAccumulator,obj);
   }];
-  return result;
+  return outerAccumulator;
+}
+
+-(NSArray*)map:(ObjectArrayIteratorBlock)aBlock {
+  return [self reduceWithAccumulator:@[] andBlock:^id(id acc, id obj) {
+    return [acc arrayByAddingObject:aBlock(obj)];
+  }];
 }
 
 -(NSArray*)mapWithIndex:(ObjectArrayIteratorIndexedBlock)aBlock {
@@ -51,19 +37,9 @@
 }
 
 -(NSArray*)filter:(BoolArrayIteratorBlock)aBlock {
-  NSMutableArray *result = [NSMutableArray array];
-  [self each:^(id object) {
-    if (aBlock(object)) [result addObject: object];
+  return [self reduceWithAccumulator:@[] andBlock:^id(id acc, id obj) {
+    return aBlock(obj) ? [acc arrayByAddingObject:obj] : acc;
   }];
-  return result;
-}
-
--(id)reduceWithAccumulator:(id)accumulator andBlock:(ObjectArrayAccumulatorBlock)aBlock {
-  __block id outerAccumulator = accumulator;
-  [self each:^(id obj) {
-    outerAccumulator = aBlock(outerAccumulator,obj);
-  }];
-  return outerAccumulator;
 }
 
 -(id)detect:(BoolArrayIteratorBlock)aBlock {
@@ -71,18 +47,35 @@
 }
 
 -(BOOL)every:(BoolArrayIteratorBlock)aBlock {
-  __block BOOL evaluation = YES;
-  [self each:^(id obj) {
-    if (evaluation) evaluation = aBlock(obj);
-  }];
-  return evaluation;
+  return [[self reduceWithAccumulator:@YES andBlock:^id(id acc, id obj) {
+    return [NSNumber numberWithBool:([acc boolValue] ? aBlock(obj) : [acc boolValue])];
+  }] boolValue];
 }
 
 -(BOOL)any:(BoolArrayIteratorBlock)aBlock {
-  NSArray *matches = [self filter:^BOOL(id obj) {
+  return [[self filter:^BOOL(id obj) {
     return aBlock(obj);
+  }] count] > 0;
+}
+
+#pragma mark - convenience methods
+
+-(NSArray*)flatten {
+  return [self reduceWithAccumulator:@[] andBlock:^id(id acc, id obj) {
+    if ([obj isKindOfClass:[NSArray class]]) {
+      return [acc arrayByAddingObjectsFromArray:[obj flatten]];
+    } else {
+      return [acc arrayByAddingObject:obj];
+    }
   }];
-  return [matches count] > 0;
+}
+
+-(id)firstObject {
+  if ([self count] > 0) {
+    return [self objectAtIndex:0];
+  } else {
+    return nil;
+  }
 }
 
 @end
