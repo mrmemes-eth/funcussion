@@ -8,12 +8,20 @@
   }];
 }
 
--(NSDictionary*)map:(DictionaryDictIteratorBlock)aBlock {
-  NSMutableDictionary *result = [NSMutableDictionary dictionary];
+-(id)reduceWithAccumulator:(id)accumulator andBlock:(ObjectAcumulatorDictBlock)aBlock {
+  __block id outerAccumulator = accumulator;
   [self each:^(id key, id value) {
-    [result addEntriesFromDictionary:aBlock(key,value)];
+    outerAccumulator = aBlock(outerAccumulator, key, value);
   }];
-  return result;
+  return outerAccumulator;
+}
+
+-(NSDictionary*)map:(DictionaryDictIteratorBlock)aBlock {
+  return [self reduceWithAccumulator:[NSMutableDictionary dictionary]
+                            andBlock:^id(id acc, id key, id value) {
+    [acc addEntriesFromDictionary:aBlock(key,value)];
+    return acc;
+  }];
 }
 
 -(NSDictionary*)mapValues:(ObjectDictIteratorBlock)aBlock {
@@ -23,42 +31,29 @@
 }
 
 -(NSArray*)mapToArray:(ObjectDictIteratorBlock)aBlock {
-  NSMutableArray *result = [NSMutableArray array];
-  [self each:^(id key, id value) {
-    [result addObject:aBlock(key,value)];
+  return [self reduceWithAccumulator:@[] andBlock:^id(id acc, id key, id value) {
+    return [acc arrayByAddingObject:aBlock(key,value)];
   }];
-  return result;
 }
 
 -(NSDictionary*)filter:(BoolDictIteratorBlock)aBlock {
-  NSMutableDictionary *result = [NSMutableDictionary dictionary];
-  [self each:^(id key, id value) {
-    if (aBlock(key,value)) [result setObject:value forKey:key];
+  return [self reduceWithAccumulator:[NSMutableDictionary dictionary]
+                            andBlock:^id(id acc, id key, id value) {
+    if(aBlock(key,value)) [acc setObject:value forKey:key];
+    return acc;
   }];
-  return result;
-}
-
--(id)reduceWithAccumulator:(id)accumulator andBlock:(ObjectAcumulatorDictBlock)aBlock {
-  __block id outerAccumulator = accumulator;
-  [self each:^(id key, id value) {
-    outerAccumulator = aBlock(outerAccumulator, key, value);
-  }];
-  return outerAccumulator;
 }
 
 -(BOOL)every:(BoolDictIteratorBlock)aBlock {
-  __block BOOL evaluation = YES;
-  [self each:^(id obj, id value) {
-    if (evaluation) evaluation = aBlock(obj,value);
-  }];
-  return evaluation;
+  return [[self reduceWithAccumulator:@YES andBlock:^id(id acc, id key, id value) {
+    return [acc boolValue] ? [NSNumber numberWithBool:aBlock(key,value)] : acc;
+  }] boolValue];
 }
 
 -(BOOL)any:(BoolDictIteratorBlock)aBlock {
-  NSDictionary *matches = [self filter:^BOOL(id key, id value) {
+ return [[self filter:^BOOL(id key, id value) {
     return aBlock(key,value);
-  }];
-  return [matches count] > 0;
+  }] count] > 0;
 }
 
 @end
