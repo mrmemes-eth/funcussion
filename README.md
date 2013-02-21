@@ -23,8 +23,7 @@ Returns the first object in the array; a shortcut for `[array objectAtIndex:0]`.
 
 _Example:_
 
-    NSArray *array = [NSArray arrayWithObjects:@"Foo", @"Bar", @"Baz", nil];
-    [array firstObject]; // => @"Foo"
+    [@[@"Foo", @"Bar", @"Baz"]  firstObject]; // => @"Foo"
 
 ### flatten
 
@@ -35,15 +34,10 @@ inserted into the returned array as they're encountered.
 
 _Example:_
 
-    NSArray *simpleArray = [NSArray arrayWithObjects:@"one", @"two", nil];
-    NSArray *nestedArray = [NSArray arrayWithObjects:@"microphone",
-                                                     @"check",
-                                                     simpleArray,
-                                                     simpleArray, nil];
+    NSArray *simpleArray = @[@"one", @"two"];
+    NSArray *nestedArray = @[@"microphone", @"check", simpleArray, simpleArray];
     [nestedArray flatten];
-    // => [NSArray arrayWithObjects:@"microphone", @"check",
-    //                              @"one", @"two",
-    //                              @"one", @"two", nil];
+    // => @[@"microphone", @"check", @"one", @"two", @"one", @"two"];
 
 ## NSArray functional operations
 
@@ -88,7 +82,7 @@ _Example:_
     [simpleArray map:^(id obj) {
       return [obj uppercaseString];
     }];
-    // => [NSArray arrayWithObjects:@"ONE", @"TWO", nil]
+    // => @[@"ONE", @"TWO"]
 
 ### mapWithIndex:
 
@@ -103,7 +97,7 @@ _Example:_
     [simpleArray mapWithIndex:^(id obj, NSUInteger index) {
       return [[obj stringByAppendingFormat:@":%d", index] uppercaseString];
     }];
-    // => [NSArray arrayWithObjects:@"ONE:0", @"TWO:1", nil]
+    // => @[@"ONE:0", @"TWO:1"]
 
 ### filter:
 
@@ -114,14 +108,10 @@ elements the supplied function evaluates to true for.
 
 _Example:_
 
-    NSArray *mixedArray = [NSArray arrayWithObjects:
-                           [NSNumber numberWithInt:0],
-                           [NSNumber numberWithInt:1], @"zero", @"one", nil];
-    [mixedArray filter:^BOOL(id obj) {
+    [@[@0, @1, @"zero", @"one"] filter:^BOOL(id obj) {
       return [obj isKindOfClass:[NSNumber class]];
     }];
-    // => [NSArray arrayWithObjects:[NSNumber numberWithInt:0],
-    //                              [NSNumber numberWithInt:0], nil];
+    // => @[@0,@1]
 
 ### reduceWithAccumulator:andBlock:
 
@@ -133,13 +123,10 @@ reduce to.
 
 _Example:_
 
-    NSArray *numericArray = [NSArray arrayWithObjects:
-                             [NSNumber numberWithInt:22],
-                             [NSNumber numberWithInt:20], nil];
-    NSNumber *accumulator = [NSNumber numberWithInt:0];
-    [numericArray reduceWithAccumulator:accumulator andBlock:^id(id acc, id obj) {
+    NSArray *numericArray = @[@22, @20];
+    [numericArray reduceWithAccumulator:@0 andBlock:^id(id acc, id obj) {
       return [NSNumber numberWithInt:[acc intValue] + [obj intValue]];
-    }]; // => [NSNumber numberWithInt:42]
+    }]; // => @42
 
 ### detect:
 
@@ -149,9 +136,7 @@ Returns the first element of the array that matches the BOOL function passed it.
 
 _Example:_
 
-    NSArray *mixedArray = [NSArray arrayWithObjects:
-                           [NSNumber numberWithInt:0],
-                           [NSNumber numberWithInt:1], @"zero", @"one", nil];
+    NSArray *mixedArray = @[@0, @1, @"zero", @"one"];
     [mixedArray detect:^BOOL(id obj) {
       return [obj isKindOfClass:[NSString class]];
     }]; // => @"zero"
@@ -165,9 +150,6 @@ BOOL value indicating whether the function is true for all elements.
 
 _Example:_
 
-    NSArray *mixedArray = [NSArray arrayWithObjects:
-                           [NSNumber numberWithInt:0],
-                           [NSNumber numberWithInt:1], @"zero", @"one", nil];
     [mixedArray every:^BOOL(id obj) {
       return [obj isKindOfClass:[NSString class]];
     }]; // => NO
@@ -185,9 +167,6 @@ BOOL value indicating whether the function is true for any element.
 
 _Example:_
 
-    NSArray *mixedArray = [NSArray arrayWithObjects:
-                           [NSNumber numberWithInt:0],
-                           [NSNumber numberWithInt:1], @"zero", @"one", nil];
     [mixedArray any:^BOOL(id obj) {
       return [obj isKindOfClass:[NSString class]];
     }]; // => YES
@@ -209,9 +188,7 @@ Iterate every couplet in an `NSDictionary` with a supplied function.
 
 _Example:_
 
-    NSDictionary *simpleDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [NSNumber numberWithInt:1], @"one",
-                                [NSNumber numberWithInt:2], @"two", nil];
+    NSDictionary *simpleDict = @{@1: @"one", @2: @"two"}
     [simpleDict each:^(id key, id value) {
       NSLog(@"couplet: %@ => %@", key, value);
     }];
@@ -231,9 +208,7 @@ _Example:_
               [key stringByAppendingFormat:@":%@",value]
                                          forKey:[key uppercaseString]];
     }];
-    // => [NSDictionary dictionaryWithObjectsAndKeys:
-    //     @"ONE", @"one:1",
-    //     @"TWO", @"two:2", nil];
+    // => @{@"ONE": @"one:1", @"TWO": @"two:2"};
 
 ### mapValues:
 
@@ -248,9 +223,7 @@ _Example:_
     [simpleDict mapValues:^id(id key, id value) {
       return [key stringByAppendingFormat:@":%@",value]
     }];
-    // => [NSDictionary dictionaryWithObjectsAndKeys:
-    //     @"one", @"one:1",
-    //     @"two", @"two:2", nil];
+    // => @{@"one": @"one:1", @"two": @"two:2"};
 
 ### mapToArray:
 
@@ -266,7 +239,7 @@ _Example:_
     [simpleDict mapToArray:^id(id key, id value) {
       return [key stringByAppendingFormat:@":%@",value]
     }];
-    // => [NSArray arrayWithObjects:@"one:1", @"two:2", nil];
+    // => @[@"one:1", @"two:2"];
 
 ### filter:
 
@@ -282,7 +255,7 @@ _Example:_
                                         @"SELF contains[cd] %@", @"one"];
     [simpleDict filter:^BOOL(id key, id value) {
       return [containPred evaluateWithObject:key];
-    }]; // => [NSDictionary dictionaryWithObjectsAndKeys:@"one", @"one:1", nil];
+    }]; // => @{@"one": @"one:1"};
 
 ### reduceWithAccumulator:andBlock:
 
@@ -294,10 +267,9 @@ will reduce to.
 
 _Example:_
 
-    NSNumber *accumulator = [NSNumber numberWithInt:0];
-    [simpleDict reduceWithAccumulator:accumulator andBlock:^id(id acc, id key, id value) {
+    [simpleDict reduceWithAccumulator:@0 andBlock:^id(id acc, id key, id value) {
       return [NSNumber numberWithInt:[acc intValue] + [value intValue]];
-    }]; // => [NSNumber numberWithInt:3]
+    }]; // => @3
 
 ### every:
 
