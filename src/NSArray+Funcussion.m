@@ -88,4 +88,10 @@
   }];
 }
 
+-(id)min:(ObjectArrayComparatorBlock)aBlock {
+  return [self reduceWithAccumulator:[self firstObject] andBlock:^id(id max, id obj) {
+    return aBlock(max,obj) == NSOrderedDescending ? obj : max;
+  }];
+}
+
 @end

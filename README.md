@@ -48,11 +48,27 @@ NSComparisonResult.
 
 _Example:_
 
-    [@[@42,@20,@22] max:^NSComparisonResult(id max, id obj) {
+    NSArray *numericArray = @[@42,@20,@22];
+    [numericArray max:^NSComparisonResult(id max, id obj) {
       return [max compare:obj];
     }];
 
     // => @42
+
+### min:
+
+Returns the "minimum" value for the array. Expects a block that returns an
+NSComparisonResult.
+
+    -(NSArray*)min:(ObjectArrayComparatorBlock)aBlock;
+
+_Example:_
+
+    [numericArray min:^NSComparisonResult(id min, id obj) {
+      return [min compare:obj];
+    }];
+
+    // => @20
 
 ## NSArray functional operations
 

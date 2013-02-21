@@ -205,4 +205,23 @@ describe(@"max:", ^{
   });
 });
 
+describe(@"min:", ^{
+  describe(@"numeric min", ^{
+    it(@"returns the biggest number", ^{
+      NSNumber *calculatedMax = [@[@42,@20,@22] min:^NSComparisonResult(id min, id obj) {
+        return [min compare:obj];
+      }];
+      [[calculatedMax should] equal:@20];
+    });
+  });
+  describe(@"string min", ^{
+    it(@"returns the alphabetically last string", ^{
+      NSNumber *calculatedMax = [repetitiveArray min:^NSComparisonResult(id min, id obj) {
+        return [min compare:obj];
+      }];
+      [[calculatedMax should] equal:@"one"];
+    });
+  });
+});
+
 SPEC_END
