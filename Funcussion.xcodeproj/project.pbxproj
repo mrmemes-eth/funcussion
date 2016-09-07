@@ -12,23 +12,19 @@
 		7C746DEB16C58DFD000950A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1003F716A72E0500808110 /* Foundation.framework */; };
 		7C746DFB16C58FB4000950A8 /* NSArrayFuncussionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C746DFA16C58FB4000950A8 /* NSArrayFuncussionSpec.m */; };
 		7C746DFD16C592A1000950A8 /* libPods-KiwiUnitTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C746DFC16C592A1000950A8 /* libPods-KiwiUnitTest.a */; };
-		7C746DFE16C5934E000950A8 /* NSArray+Funcussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1003E716A72D6E00808110 /* NSArray+Funcussion.m */; };
-		7C746DFF16C59351000950A8 /* NSDictionary+Funcussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3EFAB916A8806000AA62F1 /* NSDictionary+Funcussion.m */; };
-		AE3921441D7F7BA600DCAA05 /* NSDictionary+Funcussion.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C3EFAB816A8806000AA62F1 /* NSDictionary+Funcussion.h */; };
-		AE3921451D7F7BA800DCAA05 /* NSArray+Funcussion.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C1003E616A72D6E00808110 /* NSArray+Funcussion.h */; };
 		AE488C0A1D7F745200F7DDD3 /* Funcussion.h in Headers */ = {isa = PBXBuildFile; fileRef = AE488C091D7F745200F7DDD3 /* Funcussion.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AE488C0F1D7F756500F7DDD3 /* NSArray+Funcussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1003E716A72D6E00808110 /* NSArray+Funcussion.m */; };
-		AE488C101D7F756700F7DDD3 /* NSDictionary+Funcussion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3EFAB916A8806000AA62F1 /* NSDictionary+Funcussion.m */; };
+		AE6131C81D809C64005DB43E /* NSArray+Funcussion.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6131C51D809C64005DB43E /* NSArray+Funcussion.m */; };
+		AE6131C91D809C64005DB43E /* NSDictionary+Funcussion.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6131C71D809C64005DB43E /* NSDictionary+Funcussion.m */; };
+		AE6131CA1D809D11005DB43E /* NSArray+Funcussion.h in Headers */ = {isa = PBXBuildFile; fileRef = AE6131C41D809C64005DB43E /* NSArray+Funcussion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AE6131CB1D809D13005DB43E /* NSDictionary+Funcussion.h in Headers */ = {isa = PBXBuildFile; fileRef = AE6131C61D809C64005DB43E /* NSDictionary+Funcussion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AE6131CC1D809D1A005DB43E /* NSArray+Funcussion.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6131C51D809C64005DB43E /* NSArray+Funcussion.m */; };
+		AE6131CD1D809D1D005DB43E /* NSDictionary+Funcussion.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6131C71D809C64005DB43E /* NSDictionary+Funcussion.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0A9DDB42EC4C468D97966F3C /* Pods-KiwiUnitTest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KiwiUnitTest.xcconfig"; path = "Pods/Pods-KiwiUnitTest.xcconfig"; sourceTree = SOURCE_ROOT; };
-		7C1003E616A72D6E00808110 /* NSArray+Funcussion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Funcussion.h"; sourceTree = "<group>"; };
-		7C1003E716A72D6E00808110 /* NSArray+Funcussion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Funcussion.m"; sourceTree = "<group>"; };
 		7C1003F716A72E0500808110 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7C3EFAB216A73FB900AA62F1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		7C3EFAB816A8806000AA62F1 /* NSDictionary+Funcussion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Funcussion.h"; sourceTree = "<group>"; };
-		7C3EFAB916A8806000AA62F1 /* NSDictionary+Funcussion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Funcussion.m"; sourceTree = "<group>"; };
 		7C5A795B16D56F01001FD105 /* NSDictionaryFuncussionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDictionaryFuncussionSpec.m; path = test/NSDictionaryFuncussionSpec.m; sourceTree = SOURCE_ROOT; };
 		7C746DE716C58DFD000950A8 /* units.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = units.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C746DFA16C58FB4000950A8 /* NSArrayFuncussionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSArrayFuncussionSpec.m; path = test/NSArrayFuncussionSpec.m; sourceTree = SOURCE_ROOT; };
@@ -36,6 +32,10 @@
 		AE488C071D7F745200F7DDD3 /* Funcussion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Funcussion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE488C091D7F745200F7DDD3 /* Funcussion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Funcussion.h; sourceTree = "<group>"; };
 		AE488C0B1D7F745200F7DDD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE6131C41D809C64005DB43E /* NSArray+Funcussion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Funcussion.h"; path = "src/NSArray+Funcussion.h"; sourceTree = "<group>"; };
+		AE6131C51D809C64005DB43E /* NSArray+Funcussion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Funcussion.m"; path = "src/NSArray+Funcussion.m"; sourceTree = "<group>"; };
+		AE6131C61D809C64005DB43E /* NSDictionary+Funcussion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+Funcussion.h"; path = "src/NSDictionary+Funcussion.h"; sourceTree = "<group>"; };
+		AE6131C71D809C64005DB43E /* NSDictionary+Funcussion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+Funcussion.m"; path = "src/NSDictionary+Funcussion.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,10 +74,6 @@
 		7C1003E516A72D6E00808110 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				7C1003E616A72D6E00808110 /* NSArray+Funcussion.h */,
-				7C1003E716A72D6E00808110 /* NSArray+Funcussion.m */,
-				7C3EFAB816A8806000AA62F1 /* NSDictionary+Funcussion.h */,
-				7C3EFAB916A8806000AA62F1 /* NSDictionary+Funcussion.m */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -113,6 +109,10 @@
 		AE488C081D7F745200F7DDD3 /* Funcussion */ = {
 			isa = PBXGroup;
 			children = (
+				AE6131C41D809C64005DB43E /* NSArray+Funcussion.h */,
+				AE6131C51D809C64005DB43E /* NSArray+Funcussion.m */,
+				AE6131C61D809C64005DB43E /* NSDictionary+Funcussion.h */,
+				AE6131C71D809C64005DB43E /* NSDictionary+Funcussion.m */,
 				AE488C091D7F745200F7DDD3 /* Funcussion.h */,
 				AE488C0B1D7F745200F7DDD3 /* Info.plist */,
 			);
@@ -127,9 +127,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE3921441D7F7BA600DCAA05 /* NSDictionary+Funcussion.h in Headers */,
+				AE6131CA1D809D11005DB43E /* NSArray+Funcussion.h in Headers */,
 				AE488C0A1D7F745200F7DDD3 /* Funcussion.h in Headers */,
-				AE3921451D7F7BA800DCAA05 /* NSArray+Funcussion.h in Headers */,
+				AE6131CB1D809D13005DB43E /* NSDictionary+Funcussion.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,10 +257,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE6131C81D809C64005DB43E /* NSArray+Funcussion.m in Sources */,
 				7C746DFB16C58FB4000950A8 /* NSArrayFuncussionSpec.m in Sources */,
-				7C746DFE16C5934E000950A8 /* NSArray+Funcussion.m in Sources */,
-				7C746DFF16C59351000950A8 /* NSDictionary+Funcussion.m in Sources */,
 				7C5A795C16D56F01001FD105 /* NSDictionaryFuncussionSpec.m in Sources */,
+				AE6131C91D809C64005DB43E /* NSDictionary+Funcussion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,8 +268,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE488C0F1D7F756500F7DDD3 /* NSArray+Funcussion.m in Sources */,
-				AE488C101D7F756700F7DDD3 /* NSDictionary+Funcussion.m in Sources */,
+				AE6131CC1D809D1A005DB43E /* NSArray+Funcussion.m in Sources */,
+				AE6131CD1D809D1D005DB43E /* NSDictionary+Funcussion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
